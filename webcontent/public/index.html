@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>YAES-Yet Another Evaluation System</title>
+  </head>
+  
+  <body>
+    <div class="spinner" id="nowloading" style="display:none">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+    <div class="ui page grid" id="dialog">
+      <div class="column">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Yet Another Evaluation System</h1>
+        <h6>powered by Tiezheng Li, Shengtong Zhang and Ruiqi Duan</h6>
+        <div class="ui form segment" id="login">
+          <h3>Upload</h3>
+          <a href="#" onclick="showregister()" style="float:right">Know the name of the product? Search directly </a>
+          <br/>
+          <div class="field">
+            <div class="ui icon input">
+            <input id="file" placeholder="Choose a file" name="username"type="file" />
+            <i class="file icon"></i>              
+            </div>
+          </div>
+          <div class="ui blue fluid submit button">Go!</div>
+        </div>
+
+        <div class="ui form segment" id="register" style="display:none">
+          <h3>Search</h3>
+          <a href="#" onclick="showlogin()" style="float:right">Do not know the name? Upload a photo </a>
+          <div class="field">
+            <div class="ui icon input">
+                <input placeholder="Keyword to search" name="username" type="text">
+                <i class="search icon"></i>
+            </div>
+          </div>
+          <div class="ui blue fluid submit button">Go!</div>
+        </div>
+      </div>
+    </body>
+  </html>

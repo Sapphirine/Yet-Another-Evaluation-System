@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script type="text/javascript" src="js/Chart.js"></script>
+    <script type="text/javascript" src="js/d3.layout.cloud.js"></script>
+    <script type="text/javascript" src="js/dict.js"></script>
+    <title>YAES-Yet Another Evaluation System</title>
+  </head>
+  
+  <body>
+    <div class="ui page grid">
+        <h2 class="ui header">
+            <i class="File image icon"></i>
+            <div class="content">
+              Your Input Image
+            </div>
+          </h2>
+        <div class="row">     
+          <svg id="mainpic" width="400" height="400">
+            <image width="400" height="400" xlink:href="images/load.gif" src="images/load.gif" id="labelImage">
+          </svg>
+        </div>
+        
+        <h3 class="ui horizontal divider header">
+          <i class="fork icon"></i>
+          Matching Results
+        </h3>
+
+        <div class="row">
+          <h2 class="ui header">
+            <i class="Add to cart icon"></i>
+            <div class="content">
+              Related Products
+              <div class="sub header">Products are listed in similarity decreasing order</div>
+            </div>
+          </h2>
+          <div class="ui mini horizontal divided list">
+            <div class="item">
+              <div class="ui small rounded image">
+                <div class="ui red ribbon label">
+                  <i class="star icon"></i> 1
+                </div>
+                <img id="similar1"src="images/hand1.jpg">
+              </div>
+            </div>
+            <div class="item">
+              <div class="ui small rounded image">
+                <div class="ui orange ribbon label">
+                  <i class="star icon"></i> 2
+                </div>
+                <img id="similar2" src="images/hand2.jpg">
+              </div>
+            </div>
+            <div class="item">
+              <div class="ui small rounded image">
+                <div class="ui yellow ribbon label">
+                  <i class="star icon"></i> 3
+                </div>
+                <img id="similar3" src="images/hand3.jpg">
+              </div>
+            </div>
+            <div class="item">
+              <div class="ui small rounded image">
+                <div class="ui olive ribbon label">
+                  <i class="star icon"></i> 4
+                </div>
+                <img id="similar4" src="images/lean1.jpg">
+              </div>
+            </div>
+            <div class="item">
+              <div class="ui small rounded image">  
+                <div class="ui gray ribbon label">
+                  <i class="star icon"></i> 5
+                </div>
+                <img id="similar5" src="images/lean2.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="ui horizontal divider header">
+          <i class="star icon"></i>
+          Ratings
+        </h3>
+
+        <div class="row">
+          <div class="column" id ="overallrating">
+            The average customer rating is 
+            <div class="ui huge heart rating" data-rating="3" data-max-rating="5"></div>
+            (3.7)  based on 1999 reviews.
+          </div>
+        </div>
+
+        <div class="row">
+            <canvas id="myChart" width="300" height="300"></canvas>
+        </div>
+        <div id="js-legend" class="chart-legend"></div>
+          
+        <h3 class="ui horizontal divider header">
+          <i class="comments icon"></i>
+          User Comments
+        </h3>
+    </div>
+    
+
+    <div class="ui  container">
+      
+      <div class="ui four column divided grid">
+        <div class="row">
+          <div class="one wide column">
+          </div>
+          <div class="seven wide column">
+            <h3>Most Helpful Positive Reviews</h3>
+            
+            
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="posavatar1">
+                </a>
+                <div class="content">
+                  <a class="author" id="posauthor1">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="posdate1">2 days ago</div>
+                    <div class="rating" id="posrating1">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="postext1">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="posavatar2">
+                </a>
+                <div class="content">
+                  <a class="author" id="posauthor2">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="posdate2">2 days ago</div>
+                    <div class="rating" id="posrating2">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="postext2">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="posavatar3">
+                </a>
+                <div class="content">
+                  <a class="author" id="posauthor3">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="posdate3">2 days ago</div>
+                    <div class="rating" id="posrating3">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="postext3">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="posavatar4">
+                </a>
+                <div class="content">
+                  <a class="author" id="posauthor4">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="posdate4">2 days ago</div>
+                    <div class="rating" id="posrating4">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="postext4">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="posavatar5">
+                </a>
+                <div class="content">
+                  <a class="author" id="posauthor5">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="posdate5">2 days ago</div>
+                    <div class="rating" id="posrating5">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="postext5">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div-->
+
+
+          </div>
+          <div class="seven wide column">
+            <h3>Most Helpful Critical Reviews</h3>
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="negavatar1">
+                </a>
+                <div class="content">
+                  <a class="author" id="negauthor1">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="negdate1">2 days ago</div>
+                    <div class="rating" id="negrating1">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="negtext1">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="negavatar2">
+                </a>
+                <div class="content">
+                  <a class="author" id="negauthor2">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="negdate2">2 days ago</div>
+                    <div class="rating" id="negrating2">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="negtext2">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="negavatar3">
+                </a>
+                <div class="content">
+                  <a class="author" id="negauthor3">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="negdate3">2 days ago</div>
+                    <div class="rating" id="negrating3">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="negtext3">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="negavatar4">
+                </a>
+                <div class="content">
+                  <a class="author" id="negauthor4">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="negdate4">2 days ago</div>
+                    <div class="rating" id="negrating4">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="negtext4">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="ui comments">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="images/amazon.png" id="negavatar5">
+                </a>
+                <div class="content">
+                  <a class="author" id="negauthor5">Stevie Feliciano</a>
+                  <div class="metadata">
+                    <div class="date" id="negdate5">2 days ago</div>
+                    <div class="rating" id="negrating5">
+                      <i class="star icon"></i>
+                      5
+                    </div>
+                  </div>
+                  <div class="text" id="negtext5">
+                    Hey guys, I hope this example comment is helping you read this documentation.
+                  </div>
+                </div>
+              </div>
+            </div-->
+          </div>
+          
+          <div class="one wide column">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <h3 class="ui horizontal divider header">
+          <i class="cloud icon"></i>
+          Word Clouds
+        </h3>
+    <div class="ui page grid">
+        <div class="row">
+          <img src="images/wordcloud1.svg" alt="">
+        </div>
+    </div>
+     <script>
+      $('#labelImage').attr('xlink:href', "data/productimg/" + $.cookie('filename'));
+      var realname = $.cookie('filename').split('.')[0];
+      for (var i = 0; i < similarpics.length;i++){
+          if (similarpics[i].key == realname){
+              var similarp = similarpics[i].value;
+              $('#similar1').attr('src',"data/productimg/" + similarp[0] + ".jpg");
+              $('#similar2').attr('src',"data/productimg/" + similarp[1] + ".jpg");
+              $('#similar3').attr('src',"data/productimg/" + similarp[2] + ".jpg");
+              $('#similar4').attr('src',"data/productimg/" + similarp[3] + ".jpg");
+              $('#similar5').attr('src',"data/productimg/" + similarp[4] + ".jpg");
+          }
+      }
+
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var data = [
+        {
+            value: 60,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Postive"
+        },
+        {
+            value: 10,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "Netural"
+        },
+        {
+            value: 30,
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "Negative"
+        }        
+      ];
+
+      for (var i = 0; i < overallstatinfo.length;i++){
+          if (overallstatinfo[i].key == realname){
+              var overinfo = overallstatinfo[i].value;
+              $("#overallrating").html('The average customer rating is <div class="ui huge heart rating" data-rating="' + Math.round(overinfo[0]).toString() + '" data-max-rating="5"></div>(' + overinfo[0].toString()+')  based on '+ (overinfo[2]).toString() + ' reviews.<br><br> The average sentiment is <font color="red" size="6">' + Math.round(overinfo[1]*100).toString() + " </font>%." );    
+              data[0].value =  overinfo[3];
+              data[1].value =  overinfo[4];
+              data[2].value =  overinfo[5];
+          }
+      }
+
+      for (var i = 0; i < positivecomment.length;i++){
+          if (positivecomment[i].key == realname){
+              var pcomments = positivecomment[i].value;
+              function renderposcomment(id){
+                    $('#posauthor'+ (id + 1).toString()).html(Math.round(pcomments[id][4] * 100).toString() + " % positive");
+                    $('#posdate'+ (id + 1).toString()).html("on " + pcomments[id][3]);
+                    $('#postext'+ (id + 1).toString()).html(pcomments[id][1]);
+                    $('#posrating'+ (id + 1).toString()).html('<i class="star icon"></i>' + Math.round(pcomments[id][2]).toString());
+              }
+              for (var j = 0; j < 3; j++)
+                renderposcomment(j);
+          }
+      }
+
+      for (var i = 0; i < negativecomment.length;i++){
+          if (negativecomment[i].key == realname){
+              var pcomments = negativecomment[i].value;
+              function rendernegcomment(id){
+                    $('#negauthor'+ (id + 1).toString()).html(100 - Math.round(pcomments[id][4] * 100).toString() + " % negative");
+                    $('#negdate'+ (id + 1).toString()).html("on " + pcomments[id][3]);
+                    $('#negtext'+ (id + 1).toString()).html(pcomments[id][1]);
+                    $('#negrating'+ (id + 1).toString()).html('<i class="star icon"></i>' + Math.round(pcomments[id][2]).toString());
+              }
+              for (var j = 0; j < 3; j++)
+                rendernegcomment(j);
+          }
+      }
+      
+      var myNewChart = new Chart(ctx).Doughnut(data,{
+        animateScale: true
+      });
+      document.getElementById('js-legend').innerHTML =myNewChart.generateLegend();
+     
+  </script>
+    <script type="text/javascript" src="js/word-cloud.js"></script>
+  </body>
+</html>

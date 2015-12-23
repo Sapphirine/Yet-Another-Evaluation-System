@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  div(class='following bar')
+    div(class='ui page grid')
+      div(class='column')
+
+  div(class='ui page grid')
+    div(class='column')
+      h1= title
+      p Welcome to #{title}
+      p Powered by SPG
+      h4(class='ui dividing header') 登录
+      div(class='ui form segment')
+        div(class='two fields')
+          div(class='required field')
+            label 用户名
+          div(class='ui icon input')
+            input(type='text')
+            i(class='user icon')
+          br
+          br
+          div(class='required field')
+            label 密码
+          div(class='ui icon input')
+            input(type='password')
+            i(class='lock icon')
+          br
+          br 
+          div(class='ui blue submit button')登录
+      h4(class='ui dividing header') 注册
+      div(class='ui form segment')
+        div(class='two fields')
+          div(class='required field')
+            label  用户名
+          div(class='ui icon input')
+            input(type='text')
+            i(class='user icon')
+          br
+          br
+          div(class='required field')
+            label 密码
+          div(class='ui icon input')
+            input(type='password')
+            i(class='lock icon')
+          br
+          br
+          div(class='required field')
+            label 重复密码
+          div(class='ui icon input')
+            input(type='password')
+            i(class='lock icon')
+          br
+          br 
+          div(class='ui green submit button')注册
